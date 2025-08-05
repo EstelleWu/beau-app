@@ -1,97 +1,144 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Beau - AI Relationship Coach App
 
-# Getting Started
+A beautiful, intelligent relationship coaching app built with React Native and OpenAI GPT-3.5-turbo.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🌟 Features
 
-## Step 1: Start Metro
+- **AI-Powered Chat**: Intelligent relationship advice from Beau, your personal relationship coach
+- **Beautiful UI**: Modern, Telegram-inspired chat interface with customizable backgrounds
+- **Real-time Responses**: Fast, contextual AI responses for relationship guidance
+- **Cross-platform**: Works on both iOS and Android
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🚀 Getting Started
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Prerequisites
+
+- Node.js (>=18)
+- React Native development environment
+- OpenAI API key
+
+### Step 1: Clone and Install
 
 ```sh
-# Using npm
+git clone <your-repo-url>
+cd BeauApp
+npm install
+```
+
+### Step 2: Set Up OpenAI API
+
+1. Get your OpenAI API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Create a `.env` file in the root directory:
+
+```sh
+# Copy the example file
+cp env.example .env
+
+# Edit .env and add your API key
+OPENAI_API_KEY=your-actual-api-key-here
+```
+
+### Step 3: Start Metro
+
+```sh
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### Step 4: Run the App
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
+#### iOS
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### Android
+```sh
+npm run android
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 🤖 AI Integration
 
-## Step 3: Modify your app
+The app uses OpenAI's GPT-3.5-turbo model with a custom personality prompt designed for relationship coaching. Beau is:
 
-Now that you have successfully run the app, let's make changes!
+- **Warm and empathetic** - Like talking to a wise friend
+- **Practical and actionable** - Provides specific advice
+- **Non-judgmental** - Creates a safe space for sharing
+- **Professional** - Maintains appropriate boundaries
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## 🎨 UI Features
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+- **Customizable backgrounds** - Choose from various gradient themes
+- **Smooth animations** - Typing indicators and message transitions
+- **Responsive design** - Works on all screen sizes
+- **Modern chat interface** - Inspired by Telegram and Slack
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 📱 Usage
 
-## Congratulations! :tada:
+1. **Start a conversation** - Beau will greet you with a warm welcome
+2. **Share your thoughts** - Ask questions about relationships, dating, or personal growth
+3. **Get personalized advice** - Receive thoughtful, contextual responses
+4. **Continue the conversation** - Beau remembers your chat history for better context
 
-You've successfully run and modified your React Native App. :partying_face:
+## 🔧 Development
 
-### Now what?
+### Project Structure
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```
+src/
+├── components/          # Reusable UI components
+├── screens/            # Main app screens
+│   └── ChatScreen.tsx  # Main chat interface
+├── services/           # Business logic
+│   └── aiService.ts    # OpenAI integration
+└── types/              # TypeScript type definitions
+```
 
-# Troubleshooting
+### Key Files
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- `src/screens/ChatScreen.tsx` - Main chat interface
+- `src/services/aiService.ts` - AI integration logic
+- `babel.config.js` - Environment variables configuration
 
-# Learn More
+### Available Scripts
 
-To learn more about React Native, take a look at the following resources:
+```sh
+npm start              # Start Metro bundler
+npm run ios            # Run on iOS simulator
+npm run android        # Run on Android emulator
+npm run monitor-errors # Monitor for errors
+npm run auto-monitor   # Enhanced error monitoring
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🛠️ Troubleshooting
+
+### Common Issues
+
+1. **API Key Error**: Make sure your `.env` file has the correct OpenAI API key
+2. **Metro Issues**: Try `npm start --reset-cache`
+3. **iOS Build Issues**: Run `cd ios && pod install` then `npm run ios`
+
+### Error Monitoring
+
+The app includes automatic error detection. If you encounter issues:
+
+```sh
+npm run auto-monitor
+```
+
+This will automatically detect and categorize errors in real-time.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+---
+
+**Built with ❤️ using React Native and OpenAI**

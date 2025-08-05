@@ -92,6 +92,15 @@ const ChatScreen = () => {
         }),
       ])
     ).start();
+
+    // Add welcome message
+    const welcomeMessage: Message = {
+      id: Date.now(),
+      content: "Hi! I'm Beau, your relationship coach. I'm here to help you navigate your relationships with wisdom and empathy. What's on your mind today? 💚",
+      isUser: false,
+      date: new Date(),
+    };
+    setMessages([welcomeMessage]);
   }, []);
 
   // Typing animation effect
@@ -147,20 +156,18 @@ const ChatScreen = () => {
       // Show typing indicator
       setIsTyping(true);
       
-      // Simulate AI response
-      const responseTime = Math.random() * 1000 + 1000; // 1-2 seconds
-      
+      // Simulate AI response (for testing purposes)
       setTimeout(() => {
         setIsTyping(false); // Hide typing indicator
         try {
-          const aiResponse: Message = {
+          const aiMessage: Message = {
             id: Date.now() + 1,
-            content: "I'm here to help with your relationship! What's on your mind?",
+            content: "Thanks for your message! I'm here to help with your relationship questions. What's on your mind?",
             isUser: false,
             date: new Date(),
           };
-          console.log('🔍 AI response created:', aiResponse);
-          setMessages(prev => [...prev, aiResponse]);
+          console.log('🔍 AI response created:', aiMessage);
+          setMessages(prev => [...prev, aiMessage]);
           
           // Auto-scroll to bottom after AI response
           setTimeout(() => {
@@ -172,7 +179,7 @@ const ChatScreen = () => {
             console.error('🚨 Error details:', error.message, error.stack);
           }
         }
-      }, responseTime);
+      }, 1000); // 1 second delay to simulate AI processing
     } catch (error) {
       console.error('🚨 Error in handleSendMessage:', error);
       if (error instanceof Error) {
@@ -221,7 +228,7 @@ const ChatScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} testID="chat-container">
       <KeyboardAvoidingView 
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -265,6 +272,7 @@ const ChatScreen = () => {
             showsVerticalScrollIndicator={false}
             automaticallyAdjustKeyboardInsets={true}
             contentContainerStyle={styles.messagesContainer}
+            testID="message-list"
             ListFooterComponent={() => 
               isTyping ? (
                 <View style={styles.aiMessageContainer}>
@@ -315,7 +323,7 @@ const ChatScreen = () => {
               style={[styles.inputStyle, { minHeight: 40, maxHeight: 100 }]}
               value={inputText}
               onChangeText={setInputText}
-              placeholder="Share what's on your mind..."
+              placeholder="Type a message..."
               placeholderTextColor="#9CA3AF"
               maxLength={500}
               multiline={true}
@@ -324,6 +332,7 @@ const ChatScreen = () => {
               <TouchableOpacity
                 style={styles.sendButtonContainerStyle}
                 onPress={handleSendMessage}
+                testID="send-button"
               />
             </View>
           </View>
